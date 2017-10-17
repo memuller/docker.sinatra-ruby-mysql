@@ -1,4 +1,4 @@
-PRJ_NAME=dbruby
+PRJ_NAME:=$(notdir $(shell pwd))
 
 build:
 	docker-compose down; docker-compose build
