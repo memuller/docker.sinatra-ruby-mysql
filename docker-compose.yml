@@ -1,0 +1,23 @@
+version: '3.3'
+
+services:
+
+  ruby:
+    build: ./
+    image: ruby
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    entrypoint: /bin/sh -c "shotgun config.ru -p$${APP_PORT} -s$${APP_SERVER} -o$${APP_HOST}"
+    links:
+      - db
+
+  db:
+    image: mysql:5.5
+    restart: always
+    environment:
+      MYSQL_DATABASE: dbruby
+      MYSQL_ROOT_PASSWORD: 1234
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
