@@ -5,5 +5,6 @@ gem 'sinatra'
 gem 'mysql2'
 
 gem 'thin'
+gem 'shotgun'
 
 gem 'rspec'
